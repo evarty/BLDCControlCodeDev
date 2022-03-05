@@ -1,0 +1,1573 @@
+
+output.o:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000000638 <_init>:
+ 638:	48 83 ec 08          	sub    $0x8,%rsp
+ 63c:	48 8b 05 9d 19 20 00 	mov    0x20199d(%rip),%rax        # 201fe0 <__gmon_start__>
+ 643:	48 85 c0             	test   %rax,%rax
+ 646:	74 02                	je     64a <_init+0x12>
+ 648:	ff d0                	callq  *%rax
+ 64a:	48 83 c4 08          	add    $0x8,%rsp
+ 64e:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000000650 <.plt>:
+ 650:	ff 35 b2 19 20 00    	pushq  0x2019b2(%rip)        # 202008 <_GLOBAL_OFFSET_TABLE_+0x8>
+ 656:	ff 25 b4 19 20 00    	jmpq   *0x2019b4(%rip)        # 202010 <_GLOBAL_OFFSET_TABLE_+0x10>
+ 65c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000000660 <cos@plt>:
+ 660:	ff 25 b2 19 20 00    	jmpq   *0x2019b2(%rip)        # 202018 <cos@GLIBC_2.2.5>
+ 666:	68 00 00 00 00       	pushq  $0x0
+ 66b:	e9 e0 ff ff ff       	jmpq   650 <.plt>
+
+0000000000000670 <fprintf@plt>:
+ 670:	ff 25 aa 19 20 00    	jmpq   *0x2019aa(%rip)        # 202020 <fprintf@GLIBC_2.2.5>
+ 676:	68 01 00 00 00       	pushq  $0x1
+ 67b:	e9 d0 ff ff ff       	jmpq   650 <.plt>
+
+0000000000000680 <fopen@plt>:
+ 680:	ff 25 a2 19 20 00    	jmpq   *0x2019a2(%rip)        # 202028 <fopen@GLIBC_2.2.5>
+ 686:	68 02 00 00 00       	pushq  $0x2
+ 68b:	e9 c0 ff ff ff       	jmpq   650 <.plt>
+
+0000000000000690 <sin@plt>:
+ 690:	ff 25 9a 19 20 00    	jmpq   *0x20199a(%rip)        # 202030 <sin@GLIBC_2.2.5>
+ 696:	68 03 00 00 00       	pushq  $0x3
+ 69b:	e9 b0 ff ff ff       	jmpq   650 <.plt>
+
+00000000000006a0 <fwrite@plt>:
+ 6a0:	ff 25 92 19 20 00    	jmpq   *0x201992(%rip)        # 202038 <fwrite@GLIBC_2.2.5>
+ 6a6:	68 04 00 00 00       	pushq  $0x4
+ 6ab:	e9 a0 ff ff ff       	jmpq   650 <.plt>
+
+Disassembly of section .plt.got:
+
+00000000000006b0 <.plt.got>:
+ 6b0:	ff 25 42 19 20 00    	jmpq   *0x201942(%rip)        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+ 6b6:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .text:
+
+00000000000006c0 <_start>:
+     6c0:	31 ed                	xor    %ebp,%ebp
+     6c2:	49 89 d1             	mov    %rdx,%r9
+     6c5:	5e                   	pop    %rsi
+     6c6:	48 89 e2             	mov    %rsp,%rdx
+     6c9:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+     6cd:	50                   	push   %rax
+     6ce:	54                   	push   %rsp
+     6cf:	4c 8d 05 ba 12 00 00 	lea    0x12ba(%rip),%r8        # 1990 <__libc_csu_fini>
+     6d6:	48 8d 0d 43 12 00 00 	lea    0x1243(%rip),%rcx        # 1920 <__libc_csu_init>
+     6dd:	48 8d 3d 0c 01 00 00 	lea    0x10c(%rip),%rdi        # 7f0 <main>
+     6e4:	ff 15 ee 18 20 00    	callq  *0x2018ee(%rip)        # 201fd8 <__libc_start_main@GLIBC_2.2.5>
+     6ea:	f4                   	hlt    
+     6eb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+00000000000006f0 <deregister_tm_clones>:
+     6f0:	48 8d 3d 59 19 20 00 	lea    0x201959(%rip),%rdi        # 202050 <__TMC_END__>
+     6f7:	48 8d 05 59 19 20 00 	lea    0x201959(%rip),%rax        # 202057 <__TMC_END__+0x7>
+     6fe:	55                   	push   %rbp
+     6ff:	48 29 f8             	sub    %rdi,%rax
+     702:	48 89 e5             	mov    %rsp,%rbp
+     705:	48 83 f8 0e          	cmp    $0xe,%rax
+     709:	76 15                	jbe    720 <deregister_tm_clones+0x30>
+     70b:	48 8b 05 be 18 20 00 	mov    0x2018be(%rip),%rax        # 201fd0 <_ITM_deregisterTMCloneTable>
+     712:	48 85 c0             	test   %rax,%rax
+     715:	74 09                	je     720 <deregister_tm_clones+0x30>
+     717:	5d                   	pop    %rbp
+     718:	ff e0                	jmpq   *%rax
+     71a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     720:	5d                   	pop    %rbp
+     721:	c3                   	retq   
+     722:	0f 1f 40 00          	nopl   0x0(%rax)
+     726:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+     72d:	00 00 00 
+
+0000000000000730 <register_tm_clones>:
+     730:	48 8d 3d 19 19 20 00 	lea    0x201919(%rip),%rdi        # 202050 <__TMC_END__>
+     737:	48 8d 35 12 19 20 00 	lea    0x201912(%rip),%rsi        # 202050 <__TMC_END__>
+     73e:	55                   	push   %rbp
+     73f:	48 29 fe             	sub    %rdi,%rsi
+     742:	48 89 e5             	mov    %rsp,%rbp
+     745:	48 c1 fe 03          	sar    $0x3,%rsi
+     749:	48 89 f0             	mov    %rsi,%rax
+     74c:	48 c1 e8 3f          	shr    $0x3f,%rax
+     750:	48 01 c6             	add    %rax,%rsi
+     753:	48 d1 fe             	sar    %rsi
+     756:	74 18                	je     770 <register_tm_clones+0x40>
+     758:	48 8b 05 91 18 20 00 	mov    0x201891(%rip),%rax        # 201ff0 <_ITM_registerTMCloneTable>
+     75f:	48 85 c0             	test   %rax,%rax
+     762:	74 0c                	je     770 <register_tm_clones+0x40>
+     764:	5d                   	pop    %rbp
+     765:	ff e0                	jmpq   *%rax
+     767:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+     76e:	00 00 
+     770:	5d                   	pop    %rbp
+     771:	c3                   	retq   
+     772:	0f 1f 40 00          	nopl   0x0(%rax)
+     776:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+     77d:	00 00 00 
+
+0000000000000780 <__do_global_dtors_aux>:
+     780:	80 3d c9 18 20 00 00 	cmpb   $0x0,0x2018c9(%rip)        # 202050 <__TMC_END__>
+     787:	75 27                	jne    7b0 <__do_global_dtors_aux+0x30>
+     789:	48 83 3d 67 18 20 00 	cmpq   $0x0,0x201867(%rip)        # 201ff8 <__cxa_finalize@GLIBC_2.2.5>
+     790:	00 
+     791:	55                   	push   %rbp
+     792:	48 89 e5             	mov    %rsp,%rbp
+     795:	74 0c                	je     7a3 <__do_global_dtors_aux+0x23>
+     797:	48 8b 3d aa 18 20 00 	mov    0x2018aa(%rip),%rdi        # 202048 <__dso_handle>
+     79e:	e8 0d ff ff ff       	callq  6b0 <.plt.got>
+     7a3:	e8 48 ff ff ff       	callq  6f0 <deregister_tm_clones>
+     7a8:	5d                   	pop    %rbp
+     7a9:	c6 05 a0 18 20 00 01 	movb   $0x1,0x2018a0(%rip)        # 202050 <__TMC_END__>
+     7b0:	f3 c3                	repz retq 
+     7b2:	0f 1f 40 00          	nopl   0x0(%rax)
+     7b6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+     7bd:	00 00 00 
+
+00000000000007c0 <frame_dummy>:
+     7c0:	48 8d 3d 11 16 20 00 	lea    0x201611(%rip),%rdi        # 201dd8 <__JCR_END__>
+     7c7:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+     7cb:	75 0b                	jne    7d8 <frame_dummy+0x18>
+     7cd:	e9 5e ff ff ff       	jmpq   730 <register_tm_clones>
+     7d2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+     7d8:	48 8b 05 09 18 20 00 	mov    0x201809(%rip),%rax        # 201fe8 <_Jv_RegisterClasses>
+     7df:	48 85 c0             	test   %rax,%rax
+     7e2:	74 e9                	je     7cd <frame_dummy+0xd>
+     7e4:	55                   	push   %rbp
+     7e5:	48 89 e5             	mov    %rsp,%rbp
+     7e8:	ff d0                	callq  *%rax
+     7ea:	5d                   	pop    %rbp
+     7eb:	e9 40 ff ff ff       	jmpq   730 <register_tm_clones>
+
+00000000000007f0 <main>:
+
+void SpaceVector(float VAlpha, float VBeta, float DCLinkVoltage, float PulsePeriod, int PWMMaxValue, int PWMReturnValues[]);
+void SpaceVectorIMP(float VAlpha, float VBeta, float DCLinkVoltage, float PulsePeriod, int PWMMaxValue, int PWMReturnValues[]);
+
+
+int main(void){
+     7f0:	55                   	push   %rbp
+     7f1:	48 89 e5             	mov    %rsp,%rbp
+     7f4:	48 83 ec 50          	sub    $0x50,%rsp
+    //float RotorPosition = 0;
+    //float TorqueControlInput = 0;
+    //float UOut = 0;
+    //float VOut = 0;
+    //float WOut = 0;
+    int Setpoints[3] = {0,0,0};
+     7f8:	c7 45 c4 00 00 00 00 	movl   $0x0,-0x3c(%rbp)
+     7ff:	c7 45 c8 00 00 00 00 	movl   $0x0,-0x38(%rbp)
+     806:	c7 45 cc 00 00 00 00 	movl   $0x0,-0x34(%rbp)
+    float MaxDC = 24;
+     80d:	f3 0f 10 05 f3 11 00 	movss  0x11f3(%rip),%xmm0        # 1a08 <_IO_stdin_used+0x68>
+     814:	00 
+     815:	f3 0f 11 45 f8       	movss  %xmm0,-0x8(%rbp)
+    float VAlpha = 0;
+     81a:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     81e:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+    float VBeta = 0;
+     823:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     827:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    float PulsePeriod = 1;
+     82c:	f3 0f 10 05 d8 11 00 	movss  0x11d8(%rip),%xmm0        # 1a0c <_IO_stdin_used+0x6c>
+     833:	00 
+     834:	f3 0f 11 45 ec       	movss  %xmm0,-0x14(%rbp)
+    int PWMMax = 4096;
+     839:	c7 45 e8 00 10 00 00 	movl   $0x1000,-0x18(%rbp)
+    //float theta = 0;
+    float length = 8;
+     840:	f3 0f 10 05 c8 11 00 	movss  0x11c8(%rip),%xmm0        # 1a10 <_IO_stdin_used+0x70>
+     847:	00 
+     848:	f3 0f 11 45 e4       	movss  %xmm0,-0x1c(%rbp)
+
+    FILE *Output;
+    Output = fopen("./Output.txt","w");
+     84d:	48 8d 35 5c 11 00 00 	lea    0x115c(%rip),%rsi        # 19b0 <_IO_stdin_used+0x10>
+     854:	48 8d 3d 57 11 00 00 	lea    0x1157(%rip),%rdi        # 19b2 <_IO_stdin_used+0x12>
+     85b:	e8 20 fe ff ff       	callq  680 <fopen@plt>
+     860:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+    //fprintf(Output, "Valpha, VBeta, USetpoint, VSetpoint, WSetpoint\n");
+    fprintf(Output, "Theta, USetpoint, VSetpoint, WSetpoint\n");
+     864:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+     868:	48 89 c1             	mov    %rax,%rcx
+     86b:	ba 27 00 00 00       	mov    $0x27,%edx
+     870:	be 01 00 00 00       	mov    $0x1,%esi
+     875:	48 8d 3d 44 11 00 00 	lea    0x1144(%rip),%rdi        # 19c0 <_IO_stdin_used+0x20>
+     87c:	e8 1f fe ff ff       	callq  6a0 <fwrite@plt>
+
+    FILE *OutputImp;
+    OutputImp = fopen("./OutputImp.txt","w");
+     881:	48 8d 35 28 11 00 00 	lea    0x1128(%rip),%rsi        # 19b0 <_IO_stdin_used+0x10>
+     888:	48 8d 3d 59 11 00 00 	lea    0x1159(%rip),%rdi        # 19e8 <_IO_stdin_used+0x48>
+     88f:	e8 ec fd ff ff       	callq  680 <fopen@plt>
+     894:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    fprintf(OutputImp, "Theta, USetpoint, VSetpoint, WSetpoint\n");
+     898:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+     89c:	48 89 c1             	mov    %rax,%rcx
+     89f:	ba 27 00 00 00       	mov    $0x27,%edx
+     8a4:	be 01 00 00 00       	mov    $0x1,%esi
+     8a9:	48 8d 3d 10 11 00 00 	lea    0x1110(%rip),%rdi        # 19c0 <_IO_stdin_used+0x20>
+     8b0:	e8 eb fd ff ff       	callq  6a0 <fwrite@plt>
+
+    for(int i = 0; i < 3600; i++){
+     8b5:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+     8bc:	e9 90 01 00 00       	jmpq   a51 <main+0x261>
+        VAlpha = length*sin(i/1800.*PI);
+     8c1:	f3 0f 5a 6d e4       	cvtss2sd -0x1c(%rbp),%xmm5
+     8c6:	f2 0f 11 6d b8       	movsd  %xmm5,-0x48(%rbp)
+     8cb:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     8cf:	f2 0f 2a 45 fc       	cvtsi2sdl -0x4(%rbp),%xmm0
+     8d4:	f2 0f 10 0d 3c 11 00 	movsd  0x113c(%rip),%xmm1        # 1a18 <_IO_stdin_used+0x78>
+     8db:	00 
+     8dc:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     8e0:	f2 0f 10 0d 38 11 00 	movsd  0x1138(%rip),%xmm1        # 1a20 <_IO_stdin_used+0x80>
+     8e7:	00 
+     8e8:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     8ec:	e8 9f fd ff ff       	callq  690 <sin@plt>
+     8f1:	f2 0f 59 45 b8       	mulsd  -0x48(%rbp),%xmm0
+     8f6:	f2 0f 5a f0          	cvtsd2ss %xmm0,%xmm6
+     8fa:	f3 0f 11 75 f4       	movss  %xmm6,-0xc(%rbp)
+        VBeta = length*cos(i/1800.*PI);
+     8ff:	f3 0f 5a 7d e4       	cvtss2sd -0x1c(%rbp),%xmm7
+     904:	f2 0f 11 7d b8       	movsd  %xmm7,-0x48(%rbp)
+     909:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     90d:	f2 0f 2a 45 fc       	cvtsi2sdl -0x4(%rbp),%xmm0
+     912:	f2 0f 10 0d fe 10 00 	movsd  0x10fe(%rip),%xmm1        # 1a18 <_IO_stdin_used+0x78>
+     919:	00 
+     91a:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     91e:	f2 0f 10 0d fa 10 00 	movsd  0x10fa(%rip),%xmm1        # 1a20 <_IO_stdin_used+0x80>
+     925:	00 
+     926:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     92a:	e8 31 fd ff ff       	callq  660 <cos@plt>
+     92f:	f2 0f 59 45 b8       	mulsd  -0x48(%rbp),%xmm0
+     934:	f2 0f 5a e0          	cvtsd2ss %xmm0,%xmm4
+     938:	f3 0f 11 65 f0       	movss  %xmm4,-0x10(%rbp)
+        SpaceVector(VAlpha, VBeta, MaxDC, PulsePeriod, PWMMax, Setpoints);
+     93d:	48 8d 4d c4          	lea    -0x3c(%rbp),%rcx
+     941:	8b 55 e8             	mov    -0x18(%rbp),%edx
+     944:	f3 0f 10 55 ec       	movss  -0x14(%rbp),%xmm2
+     949:	f3 0f 10 4d f8       	movss  -0x8(%rbp),%xmm1
+     94e:	f3 0f 10 45 f0       	movss  -0x10(%rbp),%xmm0
+     953:	8b 45 f4             	mov    -0xc(%rbp),%eax
+     956:	48 89 ce             	mov    %rcx,%rsi
+     959:	89 d7                	mov    %edx,%edi
+     95b:	0f 28 da             	movaps %xmm2,%xmm3
+     95e:	0f 28 d1             	movaps %xmm1,%xmm2
+     961:	0f 28 c8             	movaps %xmm0,%xmm1
+     964:	89 45 b8             	mov    %eax,-0x48(%rbp)
+     967:	f3 0f 10 45 b8       	movss  -0x48(%rbp),%xmm0
+     96c:	e8 f4 00 00 00       	callq  a65 <SpaceVector>
+        //fprintf(Output, "%lf %lf %d %d %d\n", VAlpha, VBeta, Setpoints[0], Setpoints[1], Setpoints[2]);
+        fprintf(Output, "%d %d %d %d\n", i, Setpoints[0], Setpoints[1], Setpoints[2]);
+     971:	8b 7d cc             	mov    -0x34(%rbp),%edi
+     974:	8b 75 c8             	mov    -0x38(%rbp),%esi
+     977:	8b 4d c4             	mov    -0x3c(%rbp),%ecx
+     97a:	8b 55 fc             	mov    -0x4(%rbp),%edx
+     97d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+     981:	41 89 f9             	mov    %edi,%r9d
+     984:	41 89 f0             	mov    %esi,%r8d
+     987:	48 8d 35 6a 10 00 00 	lea    0x106a(%rip),%rsi        # 19f8 <_IO_stdin_used+0x58>
+     98e:	48 89 c7             	mov    %rax,%rdi
+     991:	b8 00 00 00 00       	mov    $0x0,%eax
+     996:	e8 d5 fc ff ff       	callq  670 <fprintf@plt>
+        SpaceVectorIMP((int)(10000*VAlpha), (int)(10000*VBeta), (int)(10000*MaxDC), (int)(10000*PulsePeriod), PWMMax, Setpoints);
+     99b:	f3 0f 10 4d ec       	movss  -0x14(%rbp),%xmm1
+     9a0:	f3 0f 10 05 80 10 00 	movss  0x1080(%rip),%xmm0        # 1a28 <_IO_stdin_used+0x88>
+     9a7:	00 
+     9a8:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+     9ac:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     9b0:	66 0f ef db          	pxor   %xmm3,%xmm3
+     9b4:	f3 0f 2a d8          	cvtsi2ss %eax,%xmm3
+     9b8:	f3 0f 10 4d f8       	movss  -0x8(%rbp),%xmm1
+     9bd:	f3 0f 10 05 63 10 00 	movss  0x1063(%rip),%xmm0        # 1a28 <_IO_stdin_used+0x88>
+     9c4:	00 
+     9c5:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+     9c9:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     9cd:	66 0f ef d2          	pxor   %xmm2,%xmm2
+     9d1:	f3 0f 2a d0          	cvtsi2ss %eax,%xmm2
+     9d5:	f3 0f 10 4d f0       	movss  -0x10(%rbp),%xmm1
+     9da:	f3 0f 10 05 46 10 00 	movss  0x1046(%rip),%xmm0        # 1a28 <_IO_stdin_used+0x88>
+     9e1:	00 
+     9e2:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+     9e6:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     9ea:	66 0f ef e4          	pxor   %xmm4,%xmm4
+     9ee:	f3 0f 2a e0          	cvtsi2ss %eax,%xmm4
+     9f2:	f3 0f 10 4d f4       	movss  -0xc(%rbp),%xmm1
+     9f7:	f3 0f 10 05 29 10 00 	movss  0x1029(%rip),%xmm0        # 1a28 <_IO_stdin_used+0x88>
+     9fe:	00 
+     9ff:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+     a03:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     a07:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     a0b:	f3 0f 2a c0          	cvtsi2ss %eax,%xmm0
+     a0f:	48 8d 55 c4          	lea    -0x3c(%rbp),%rdx
+     a13:	8b 45 e8             	mov    -0x18(%rbp),%eax
+     a16:	48 89 d6             	mov    %rdx,%rsi
+     a19:	89 c7                	mov    %eax,%edi
+     a1b:	0f 28 cc             	movaps %xmm4,%xmm1
+     a1e:	e8 98 07 00 00       	callq  11bb <SpaceVectorIMP>
+    fprintf(OutputImp, "%d %d %d %d\n", i, Setpoints[0], Setpoints[1], Setpoints[2]);
+     a23:	8b 7d cc             	mov    -0x34(%rbp),%edi
+     a26:	8b 75 c8             	mov    -0x38(%rbp),%esi
+     a29:	8b 4d c4             	mov    -0x3c(%rbp),%ecx
+     a2c:	8b 55 fc             	mov    -0x4(%rbp),%edx
+     a2f:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+     a33:	41 89 f9             	mov    %edi,%r9d
+     a36:	41 89 f0             	mov    %esi,%r8d
+     a39:	48 8d 35 b8 0f 00 00 	lea    0xfb8(%rip),%rsi        # 19f8 <_IO_stdin_used+0x58>
+     a40:	48 89 c7             	mov    %rax,%rdi
+     a43:	b8 00 00 00 00       	mov    $0x0,%eax
+     a48:	e8 23 fc ff ff       	callq  670 <fprintf@plt>
+    for(int i = 0; i < 3600; i++){
+     a4d:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+     a51:	81 7d fc 0f 0e 00 00 	cmpl   $0xe0f,-0x4(%rbp)
+     a58:	0f 8e 63 fe ff ff    	jle    8c1 <main+0xd1>
+     a5e:	b8 00 00 00 00       	mov    $0x0,%eax
+
+
+
+    //fprintf(Output, "%lf %lf %lf %lf %lf\n", RotorPosition, TorqueControlInput, Output[0], Output[1], Output[2]);
+
+}
+     a63:	c9                   	leaveq 
+     a64:	c3                   	retq   
+
+0000000000000a65 <SpaceVector>:
+
+void SpaceVector(float VAlpha, float VBeta, float DCLinkVoltage, float PulsePeriod, int PWMMaxValue, int PWMReturnValues[]){
+     a65:	55                   	push   %rbp
+     a66:	48 89 e5             	mov    %rsp,%rbp
+     a69:	f3 0f 11 45 bc       	movss  %xmm0,-0x44(%rbp)
+     a6e:	f3 0f 11 4d b8       	movss  %xmm1,-0x48(%rbp)
+     a73:	f3 0f 11 55 b4       	movss  %xmm2,-0x4c(%rbp)
+     a78:	f3 0f 11 5d b0       	movss  %xmm3,-0x50(%rbp)
+     a7d:	89 7d ac             	mov    %edi,-0x54(%rbp)
+     a80:	48 89 75 a0          	mov    %rsi,-0x60(%rbp)
+
+    float a = 0;
+     a84:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     a88:	f3 0f 11 45 e0       	movss  %xmm0,-0x20(%rbp)
+    float b = 0;
+     a8d:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     a91:	f3 0f 11 45 dc       	movss  %xmm0,-0x24(%rbp)
+    float c = 0;
+     a96:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     a9a:	f3 0f 11 45 d8       	movss  %xmm0,-0x28(%rbp)
+    int Quadrant = 0;
+     a9f:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+    int Sector = 0;
+     aa6:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+    float ur = 0;
+     aad:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     ab1:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+    float ul = 0;
+     ab6:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     aba:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    float umax = 0.6666666*DCLinkVoltage;
+     abf:	f3 0f 5a 45 b4       	cvtss2sd -0x4c(%rbp),%xmm0
+     ac4:	f2 0f 10 0d 64 0f 00 	movsd  0xf64(%rip),%xmm1        # 1a30 <_IO_stdin_used+0x90>
+     acb:	00 
+     acc:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     ad0:	f2 0f 5a e0          	cvtsd2ss %xmm0,%xmm4
+     ad4:	f3 0f 11 65 d4       	movss  %xmm4,-0x2c(%rbp)
+    float Tr = 0;
+     ad9:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     add:	f3 0f 11 45 d0       	movss  %xmm0,-0x30(%rbp)
+    float Tl = 0;
+     ae2:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     ae6:	f3 0f 11 45 cc       	movss  %xmm0,-0x34(%rbp)
+    float T0 = 0;
+     aeb:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     aef:	f3 0f 11 45 c8       	movss  %xmm0,-0x38(%rbp)
+    float T7 = 0;
+     af4:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     af8:	f3 0f 11 45 c4       	movss  %xmm0,-0x3c(%rbp)
+    int uSetpoint = 0;
+     afd:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+    int vSetpoint = 0;
+     b04:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+    int wSetpoint = 0;
+     b0b:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%rbp)
+
+
+    //define terms needed for the computation and sector identification
+    a = fabs(VAlpha) + ONEOVERROOTTHREE*fabs(VBeta);
+     b12:	f3 0f 10 4d bc       	movss  -0x44(%rbp),%xmm1
+     b17:	f3 0f 10 05 21 0f 00 	movss  0xf21(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     b1e:	00 
+     b1f:	0f 54 c1             	andps  %xmm1,%xmm0
+     b22:	f3 0f 5a c8          	cvtss2sd %xmm0,%xmm1
+     b26:	f3 0f 10 55 b8       	movss  -0x48(%rbp),%xmm2
+     b2b:	f3 0f 10 05 0d 0f 00 	movss  0xf0d(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     b32:	00 
+     b33:	0f 54 c2             	andps  %xmm2,%xmm0
+     b36:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     b3a:	f2 0f 10 15 0e 0f 00 	movsd  0xf0e(%rip),%xmm2        # 1a50 <_IO_stdin_used+0xb0>
+     b41:	00 
+     b42:	f2 0f 59 c2          	mulsd  %xmm2,%xmm0
+     b46:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+     b4a:	f2 0f 5a e8          	cvtsd2ss %xmm0,%xmm5
+     b4e:	f3 0f 11 6d e0       	movss  %xmm5,-0x20(%rbp)
+    b = fabs(VAlpha) - ONEOVERROOTTHREE*fabs(VBeta);
+     b53:	f3 0f 10 4d bc       	movss  -0x44(%rbp),%xmm1
+     b58:	f3 0f 10 05 e0 0e 00 	movss  0xee0(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     b5f:	00 
+     b60:	0f 54 c1             	andps  %xmm1,%xmm0
+     b63:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     b67:	f3 0f 10 55 b8       	movss  -0x48(%rbp),%xmm2
+     b6c:	f3 0f 10 0d cc 0e 00 	movss  0xecc(%rip),%xmm1        # 1a40 <_IO_stdin_used+0xa0>
+     b73:	00 
+     b74:	0f 54 ca             	andps  %xmm2,%xmm1
+     b77:	f3 0f 5a c9          	cvtss2sd %xmm1,%xmm1
+     b7b:	f2 0f 10 15 cd 0e 00 	movsd  0xecd(%rip),%xmm2        # 1a50 <_IO_stdin_used+0xb0>
+     b82:	00 
+     b83:	f2 0f 59 ca          	mulsd  %xmm2,%xmm1
+     b87:	f2 0f 5c c1          	subsd  %xmm1,%xmm0
+     b8b:	f2 0f 5a f0          	cvtsd2ss %xmm0,%xmm6
+     b8f:	f3 0f 11 75 dc       	movss  %xmm6,-0x24(%rbp)
+    c = TWOOVERROOTTHREE*fabs(VBeta);
+     b94:	f3 0f 10 4d b8       	movss  -0x48(%rbp),%xmm1
+     b99:	f3 0f 10 05 9f 0e 00 	movss  0xe9f(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     ba0:	00 
+     ba1:	0f 54 c1             	andps  %xmm1,%xmm0
+     ba4:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     ba8:	f2 0f 10 0d a8 0e 00 	movsd  0xea8(%rip),%xmm1        # 1a58 <_IO_stdin_used+0xb8>
+     baf:	00 
+     bb0:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     bb4:	f2 0f 5a f8          	cvtsd2ss %xmm0,%xmm7
+     bb8:	f3 0f 11 7d d8       	movss  %xmm7,-0x28(%rbp)
+
+    //Identify sector and quadrant.
+    if(VBeta >= 0){
+     bbd:	f3 0f 10 45 b8       	movss  -0x48(%rbp),%xmm0
+     bc2:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     bc6:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     bc9:	72 62                	jb     c2d <SpaceVector+0x1c8>
+        if(VAlpha >= 0){
+     bcb:	f3 0f 10 45 bc       	movss  -0x44(%rbp),%xmm0
+     bd0:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     bd4:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     bd7:	72 2d                	jb     c06 <SpaceVector+0x1a1>
+            Quadrant = 1;
+     bd9:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)
+            if(b >= 0){
+     be0:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     be5:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     be9:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     bec:	72 0c                	jb     bfa <SpaceVector+0x195>
+                Sector = 1;
+     bee:	c7 45 f8 01 00 00 00 	movl   $0x1,-0x8(%rbp)
+     bf5:	e9 8d 00 00 00       	jmpq   c87 <SpaceVector+0x222>
+            }else{
+                Sector = 2;
+     bfa:	c7 45 f8 02 00 00 00 	movl   $0x2,-0x8(%rbp)
+     c01:	e9 81 00 00 00       	jmpq   c87 <SpaceVector+0x222>
+            }
+        }else{
+            Quadrant = 2;
+     c06:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%rbp)
+            if(b >= 0){
+     c0d:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     c12:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     c16:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     c19:	72 09                	jb     c24 <SpaceVector+0x1bf>
+                Sector = 3;
+     c1b:	c7 45 f8 03 00 00 00 	movl   $0x3,-0x8(%rbp)
+     c22:	eb 63                	jmp    c87 <SpaceVector+0x222>
+            }else{
+                Sector = 2;
+     c24:	c7 45 f8 02 00 00 00 	movl   $0x2,-0x8(%rbp)
+     c2b:	eb 5a                	jmp    c87 <SpaceVector+0x222>
+            }
+        }
+    }else{
+        if(VAlpha >= 0){
+     c2d:	f3 0f 10 45 bc       	movss  -0x44(%rbp),%xmm0
+     c32:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     c36:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     c39:	72 27                	jb     c62 <SpaceVector+0x1fd>
+            Quadrant = 4;
+     c3b:	c7 45 fc 04 00 00 00 	movl   $0x4,-0x4(%rbp)
+            if(b >= 0){
+     c42:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     c47:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     c4b:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     c4e:	72 09                	jb     c59 <SpaceVector+0x1f4>
+                Sector = 6;
+     c50:	c7 45 f8 06 00 00 00 	movl   $0x6,-0x8(%rbp)
+     c57:	eb 2e                	jmp    c87 <SpaceVector+0x222>
+            }else{
+                Sector = 5;
+     c59:	c7 45 f8 05 00 00 00 	movl   $0x5,-0x8(%rbp)
+     c60:	eb 25                	jmp    c87 <SpaceVector+0x222>
+            }
+        }else{
+            Quadrant = 3;
+     c62:	c7 45 fc 03 00 00 00 	movl   $0x3,-0x4(%rbp)
+            if(b >= 0){
+     c69:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     c6e:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     c72:	0f 2e c1             	ucomiss %xmm1,%xmm0
+     c75:	72 09                	jb     c80 <SpaceVector+0x21b>
+                Sector = 4;
+     c77:	c7 45 f8 04 00 00 00 	movl   $0x4,-0x8(%rbp)
+     c7e:	eb 07                	jmp    c87 <SpaceVector+0x222>
+            }else{
+                Sector = 5;
+     c80:	c7 45 f8 05 00 00 00 	movl   $0x5,-0x8(%rbp)
+        }
+    }
+
+    //Now, we have a, b, and c along with the sector and quadrant.
+    //With this, we can simply look up the moduli of the vector to the left and the right of the given vector.
+    if(Sector == 1 && Quadrant == 1){
+     c87:	83 7d f8 01          	cmpl   $0x1,-0x8(%rbp)
+     c8b:	75 1f                	jne    cac <SpaceVector+0x247>
+     c8d:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+     c91:	75 19                	jne    cac <SpaceVector+0x247>
+        ur = b;
+     c93:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     c98:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = c;
+     c9d:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+     ca2:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     ca7:	e9 43 01 00 00       	jmpq   def <SpaceVector+0x38a>
+    }else if(Sector == 2 && Quadrant == 1){
+     cac:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+     cb0:	75 2a                	jne    cdc <SpaceVector+0x277>
+     cb2:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+     cb6:	75 24                	jne    cdc <SpaceVector+0x277>
+        ur = a;
+     cb8:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+     cbd:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+     cc2:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+     cc7:	f3 0f 10 05 91 0d 00 	movss  0xd91(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+     cce:	00 
+     ccf:	0f 57 c1             	xorps  %xmm1,%xmm0
+     cd2:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     cd7:	e9 13 01 00 00       	jmpq   def <SpaceVector+0x38a>
+    }else if(Sector == 2 && Quadrant == 2){
+     cdc:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+     ce0:	75 2a                	jne    d0c <SpaceVector+0x2a7>
+     ce2:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+     ce6:	75 24                	jne    d0c <SpaceVector+0x2a7>
+        ur = -b;
+     ce8:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+     ced:	f3 0f 10 05 6b 0d 00 	movss  0xd6b(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+     cf4:	00 
+     cf5:	0f 57 c1             	xorps  %xmm1,%xmm0
+     cf8:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = a;
+     cfd:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+     d02:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     d07:	e9 e3 00 00 00       	jmpq   def <SpaceVector+0x38a>
+    }else if(Sector == 3 && Quadrant == 2){
+     d0c:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+     d10:	75 2a                	jne    d3c <SpaceVector+0x2d7>
+     d12:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+     d16:	75 24                	jne    d3c <SpaceVector+0x2d7>
+        ur = c;
+     d18:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+     d1d:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+     d22:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+     d27:	f3 0f 10 05 31 0d 00 	movss  0xd31(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+     d2e:	00 
+     d2f:	0f 57 c1             	xorps  %xmm1,%xmm0
+     d32:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     d37:	e9 b3 00 00 00       	jmpq   def <SpaceVector+0x38a>
+    }else if(Sector == 4 && Quadrant == 3){
+     d3c:	83 7d f8 04          	cmpl   $0x4,-0x8(%rbp)
+     d40:	75 1f                	jne    d61 <SpaceVector+0x2fc>
+     d42:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp)
+     d46:	75 19                	jne    d61 <SpaceVector+0x2fc>
+        ur = b;
+     d48:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     d4d:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = c;
+     d52:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+     d57:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     d5c:	e9 8e 00 00 00       	jmpq   def <SpaceVector+0x38a>
+    }else if(Sector == 5 && Quadrant == 3){
+     d61:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+     d65:	75 27                	jne    d8e <SpaceVector+0x329>
+     d67:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp)
+     d6b:	75 21                	jne    d8e <SpaceVector+0x329>
+        ur = a;
+     d6d:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+     d72:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+     d77:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+     d7c:	f3 0f 10 05 dc 0c 00 	movss  0xcdc(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+     d83:	00 
+     d84:	0f 57 c1             	xorps  %xmm1,%xmm0
+     d87:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     d8c:	eb 61                	jmp    def <SpaceVector+0x38a>
+    }else if(Sector == 5 && Quadrant == 4){
+     d8e:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+     d92:	75 27                	jne    dbb <SpaceVector+0x356>
+     d94:	83 7d fc 04          	cmpl   $0x4,-0x4(%rbp)
+     d98:	75 21                	jne    dbb <SpaceVector+0x356>
+        ur = -b;
+     d9a:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+     d9f:	f3 0f 10 05 b9 0c 00 	movss  0xcb9(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+     da6:	00 
+     da7:	0f 57 c1             	xorps  %xmm1,%xmm0
+     daa:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = a;
+     daf:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+     db4:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     db9:	eb 34                	jmp    def <SpaceVector+0x38a>
+    }else if(Sector == 6 && Quadrant == 4){
+     dbb:	83 7d f8 06          	cmpl   $0x6,-0x8(%rbp)
+     dbf:	75 1c                	jne    ddd <SpaceVector+0x378>
+     dc1:	83 7d fc 04          	cmpl   $0x4,-0x4(%rbp)
+     dc5:	75 16                	jne    ddd <SpaceVector+0x378>
+        ur = c;
+     dc7:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+     dcc:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = b;
+     dd1:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+     dd6:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+     ddb:	eb 12                	jmp    def <SpaceVector+0x38a>
+    }else{
+        ur = 0;
+     ddd:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     de1:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = 0;
+     de6:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     dea:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    }
+
+    //Now we have ur and ul and can easily get the switching times for r and l
+    Tr = PulsePeriod*fabs(ur)/umax;
+     def:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+     df4:	f3 0f 10 55 f4       	movss  -0xc(%rbp),%xmm2
+     df9:	f3 0f 10 05 3f 0c 00 	movss  0xc3f(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     e00:	00 
+     e01:	0f 54 c2             	andps  %xmm2,%xmm0
+     e04:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     e08:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     e0c:	f3 0f 5a 4d d4       	cvtss2sd -0x2c(%rbp),%xmm1
+     e11:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     e15:	f2 0f 5a d8          	cvtsd2ss %xmm0,%xmm3
+     e19:	f3 0f 11 5d d0       	movss  %xmm3,-0x30(%rbp)
+    Tl = PulsePeriod*fabs(ul)/umax;
+     e1e:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+     e23:	f3 0f 10 55 f0       	movss  -0x10(%rbp),%xmm2
+     e28:	f3 0f 10 05 10 0c 00 	movss  0xc10(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+     e2f:	00 
+     e30:	0f 54 c2             	andps  %xmm2,%xmm0
+     e33:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     e37:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     e3b:	f3 0f 5a 4d d4       	cvtss2sd -0x2c(%rbp),%xmm1
+     e40:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     e44:	f2 0f 5a e0          	cvtsd2ss %xmm0,%xmm4
+     e48:	f3 0f 11 65 cc       	movss  %xmm4,-0x34(%rbp)
+    T0 = (PulsePeriod - Tr - Tl)/2.;
+     e4d:	f3 0f 10 45 b0       	movss  -0x50(%rbp),%xmm0
+     e52:	f3 0f 5c 45 d0       	subss  -0x30(%rbp),%xmm0
+     e57:	f3 0f 5c 45 cc       	subss  -0x34(%rbp),%xmm0
+     e5c:	f3 0f 10 0d 0c 0c 00 	movss  0xc0c(%rip),%xmm1        # 1a70 <_IO_stdin_used+0xd0>
+     e63:	00 
+     e64:	f3 0f 5e c1          	divss  %xmm1,%xmm0
+     e68:	f3 0f 11 45 c8       	movss  %xmm0,-0x38(%rbp)
+    T7 = T0;
+     e6d:	f3 0f 10 45 c8       	movss  -0x38(%rbp),%xmm0
+     e72:	f3 0f 11 45 c4       	movss  %xmm0,-0x3c(%rbp)
+
+    //Now we have the switching times for all 4 states used in one cycle. We also have the Sector, so we know which vectors ur and ul are.
+    //I am assuming phase correct PWM. When the PWM counter is less than the setpoint, the pair controlled by that PWM is connected to ground. When the counter is greater than the setpoint, the pair is connected to the DC Link Voltage.
+    //So, say we are looking at u. if the counter is 100 and the setpoint is 200, u is connected to ground. if the counter is 300, u is connected to high DC voltage. 
+    //Phase correct means the counter counts up from 0 to the max pwm value, then back down to zero.
+    if(Sector == 1){
+     e77:	83 7d f8 01          	cmpl   $0x1,-0x8(%rbp)
+     e7b:	75 7c                	jne    ef9 <SpaceVector+0x494>
+        uSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+     e7d:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     e81:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+     e86:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+     e8b:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     e90:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     e94:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        vSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+     e97:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     e9b:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     ea0:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+     ea5:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+     eaa:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+     eae:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     eb2:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+     eb7:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     ebb:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     ebf:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        wSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+     ec2:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     ec6:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     ecb:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+     ed0:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     ed5:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     ed9:	f2 0f 10 15 97 0b 00 	movsd  0xb97(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+     ee0:	00 
+     ee1:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+     ee5:	66 0f 28 c2          	movapd %xmm2,%xmm0
+     ee9:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     eed:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     ef1:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+     ef4:	e9 9c 02 00 00       	jmpq   1195 <SpaceVector+0x730>
+    }else if(Sector == 2){
+     ef9:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+     efd:	75 7c                	jne    f7b <SpaceVector+0x516>
+        vSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+     eff:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     f03:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+     f08:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+     f0d:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     f12:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     f16:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        uSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+     f19:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     f1d:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     f22:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+     f27:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+     f2c:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+     f30:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     f34:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+     f39:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     f3d:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     f41:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        wSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+     f44:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     f48:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     f4d:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+     f52:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     f57:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     f5b:	f2 0f 10 15 15 0b 00 	movsd  0xb15(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+     f62:	00 
+     f63:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+     f67:	66 0f 28 c2          	movapd %xmm2,%xmm0
+     f6b:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     f6f:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     f73:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+     f76:	e9 1a 02 00 00       	jmpq   1195 <SpaceVector+0x730>
+    }else if(Sector == 3){
+     f7b:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+     f7f:	75 7c                	jne    ffd <SpaceVector+0x598>
+        vSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+     f81:	66 0f ef c0          	pxor   %xmm0,%xmm0
+     f85:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+     f8a:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+     f8f:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     f94:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+     f98:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        wSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+     f9b:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     f9f:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     fa4:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+     fa9:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+     fae:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+     fb2:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     fb6:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+     fbb:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+     fbf:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     fc3:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        uSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+     fc6:	66 0f ef c9          	pxor   %xmm1,%xmm1
+     fca:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+     fcf:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+     fd4:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+     fd9:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+     fdd:	f2 0f 10 15 93 0a 00 	movsd  0xa93(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+     fe4:	00 
+     fe5:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+     fe9:	66 0f 28 c2          	movapd %xmm2,%xmm0
+     fed:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+     ff1:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+     ff5:	89 45 ec             	mov    %eax,-0x14(%rbp)
+     ff8:	e9 98 01 00 00       	jmpq   1195 <SpaceVector+0x730>
+    }else if(Sector == 4){
+     ffd:	83 7d f8 04          	cmpl   $0x4,-0x8(%rbp)
+    1001:	75 7c                	jne    107f <SpaceVector+0x61a>
+        wSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    1003:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1007:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    100c:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    1011:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    1016:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    101a:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        vSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+    101d:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1021:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1026:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    102b:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+    1030:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    1034:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1038:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    103d:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1041:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1045:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        uSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    1048:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    104c:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1051:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    1056:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    105b:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    105f:	f2 0f 10 15 11 0a 00 	movsd  0xa11(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    1066:	00 
+    1067:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    106b:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    106f:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1073:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1077:	89 45 ec             	mov    %eax,-0x14(%rbp)
+    107a:	e9 16 01 00 00       	jmpq   1195 <SpaceVector+0x730>
+    }else if(Sector == 5){
+    107f:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+    1083:	75 7c                	jne    1101 <SpaceVector+0x69c>
+        wSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    1085:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1089:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    108e:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    1093:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    1098:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    109c:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        uSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+    109f:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    10a3:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    10a8:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    10ad:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+    10b2:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    10b6:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    10ba:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    10bf:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    10c3:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    10c7:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        vSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    10ca:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    10ce:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    10d3:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    10d8:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    10dd:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    10e1:	f2 0f 10 15 8f 09 00 	movsd  0x98f(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    10e8:	00 
+    10e9:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    10ed:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    10f1:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    10f5:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    10f9:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    10fc:	e9 94 00 00 00       	jmpq   1195 <SpaceVector+0x730>
+    }else if(Sector == 6){
+    1101:	83 7d f8 06          	cmpl   $0x6,-0x8(%rbp)
+    1105:	75 79                	jne    1180 <SpaceVector+0x71b>
+        uSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    1107:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    110b:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    1110:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    1115:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    111a:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    111e:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        wSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+    1121:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1125:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    112a:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    112f:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+    1134:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    1138:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    113c:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1141:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1145:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1149:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        vSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    114c:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1150:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1155:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    115a:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    115f:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    1163:	f2 0f 10 15 0d 09 00 	movsd  0x90d(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    116a:	00 
+    116b:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    116f:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    1173:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1177:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    117b:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    117e:	eb 15                	jmp    1195 <SpaceVector+0x730>
+    }else{
+        uSetpoint = 0;
+    1180:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+        vSetpoint = 0;
+    1187:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+        wSetpoint = 0;
+    118e:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%rbp)
+    }
+
+    //So, we have the u, v, and w setpoints for phase correct PWM. Put them into the return array so they can be accessed once this function ends.
+    PWMReturnValues[0] = uSetpoint;
+    1195:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    1199:	8b 55 ec             	mov    -0x14(%rbp),%edx
+    119c:	89 10                	mov    %edx,(%rax)
+    PWMReturnValues[1] = vSetpoint;
+    119e:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    11a2:	48 8d 50 04          	lea    0x4(%rax),%rdx
+    11a6:	8b 45 e8             	mov    -0x18(%rbp),%eax
+    11a9:	89 02                	mov    %eax,(%rdx)
+    PWMReturnValues[2] = wSetpoint;
+    11ab:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    11af:	48 8d 50 08          	lea    0x8(%rax),%rdx
+    11b3:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+    11b6:	89 02                	mov    %eax,(%rdx)
+
+}
+    11b8:	90                   	nop
+    11b9:	5d                   	pop    %rbp
+    11ba:	c3                   	retq   
+
+00000000000011bb <SpaceVectorIMP>:
+
+
+
+
+void SpaceVectorIMP(float VAlpha, float VBeta, float DCLinkVoltage, float PulsePeriod, int PWMMaxValue, int PWMReturnValues[]){
+    11bb:	55                   	push   %rbp
+    11bc:	48 89 e5             	mov    %rsp,%rbp
+    11bf:	f3 0f 11 45 bc       	movss  %xmm0,-0x44(%rbp)
+    11c4:	f3 0f 11 4d b8       	movss  %xmm1,-0x48(%rbp)
+    11c9:	f3 0f 11 55 b4       	movss  %xmm2,-0x4c(%rbp)
+    11ce:	f3 0f 11 5d b0       	movss  %xmm3,-0x50(%rbp)
+    11d3:	89 7d ac             	mov    %edi,-0x54(%rbp)
+    11d6:	48 89 75 a0          	mov    %rsi,-0x60(%rbp)
+
+    float a = 0;
+    11da:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    11de:	f3 0f 11 45 e0       	movss  %xmm0,-0x20(%rbp)
+    float b = 0;
+    11e3:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    11e7:	f3 0f 11 45 dc       	movss  %xmm0,-0x24(%rbp)
+    float c = 0;
+    11ec:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    11f0:	f3 0f 11 45 d8       	movss  %xmm0,-0x28(%rbp)
+    int Quadrant = 0;
+    11f5:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+    int Sector = 0;
+    11fc:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+    float ur = 0;
+    1203:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1207:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+    float ul = 0;
+    120c:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1210:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    float umax = 0.6666666*DCLinkVoltage;
+    1215:	f3 0f 5a 45 b4       	cvtss2sd -0x4c(%rbp),%xmm0
+    121a:	f2 0f 10 0d 0e 08 00 	movsd  0x80e(%rip),%xmm1        # 1a30 <_IO_stdin_used+0x90>
+    1221:	00 
+    1222:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1226:	f2 0f 5a e0          	cvtsd2ss %xmm0,%xmm4
+    122a:	f3 0f 11 65 d4       	movss  %xmm4,-0x2c(%rbp)
+    float Tr = 0;
+    122f:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1233:	f3 0f 11 45 d0       	movss  %xmm0,-0x30(%rbp)
+    float Tl = 0;
+    1238:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    123c:	f3 0f 11 45 cc       	movss  %xmm0,-0x34(%rbp)
+    float T0 = 0;
+    1241:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1245:	f3 0f 11 45 c8       	movss  %xmm0,-0x38(%rbp)
+    float T7 = 0;
+    124a:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    124e:	f3 0f 11 45 c4       	movss  %xmm0,-0x3c(%rbp)
+    int uSetpoint = 0;
+    1253:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+    int vSetpoint = 0;
+    125a:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+    int wSetpoint = 0;
+    1261:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%rbp)
+
+
+    //define terms needed for the computation and sector identification
+    a = fabs(VAlpha) + ONEOVERROOTTHREE*fabs(VBeta);
+    1268:	f3 0f 10 4d bc       	movss  -0x44(%rbp),%xmm1
+    126d:	f3 0f 10 05 cb 07 00 	movss  0x7cb(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    1274:	00 
+    1275:	0f 54 c1             	andps  %xmm1,%xmm0
+    1278:	f3 0f 5a c8          	cvtss2sd %xmm0,%xmm1
+    127c:	f3 0f 10 55 b8       	movss  -0x48(%rbp),%xmm2
+    1281:	f3 0f 10 05 b7 07 00 	movss  0x7b7(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    1288:	00 
+    1289:	0f 54 c2             	andps  %xmm2,%xmm0
+    128c:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    1290:	f2 0f 10 15 b8 07 00 	movsd  0x7b8(%rip),%xmm2        # 1a50 <_IO_stdin_used+0xb0>
+    1297:	00 
+    1298:	f2 0f 59 c2          	mulsd  %xmm2,%xmm0
+    129c:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+    12a0:	f2 0f 5a e8          	cvtsd2ss %xmm0,%xmm5
+    12a4:	f3 0f 11 6d e0       	movss  %xmm5,-0x20(%rbp)
+    b = fabs(VAlpha) - ONEOVERROOTTHREE*fabs(VBeta);
+    12a9:	f3 0f 10 4d bc       	movss  -0x44(%rbp),%xmm1
+    12ae:	f3 0f 10 05 8a 07 00 	movss  0x78a(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    12b5:	00 
+    12b6:	0f 54 c1             	andps  %xmm1,%xmm0
+    12b9:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    12bd:	f3 0f 10 55 b8       	movss  -0x48(%rbp),%xmm2
+    12c2:	f3 0f 10 0d 76 07 00 	movss  0x776(%rip),%xmm1        # 1a40 <_IO_stdin_used+0xa0>
+    12c9:	00 
+    12ca:	0f 54 ca             	andps  %xmm2,%xmm1
+    12cd:	f3 0f 5a c9          	cvtss2sd %xmm1,%xmm1
+    12d1:	f2 0f 10 15 77 07 00 	movsd  0x777(%rip),%xmm2        # 1a50 <_IO_stdin_used+0xb0>
+    12d8:	00 
+    12d9:	f2 0f 59 ca          	mulsd  %xmm2,%xmm1
+    12dd:	f2 0f 5c c1          	subsd  %xmm1,%xmm0
+    12e1:	f2 0f 5a f0          	cvtsd2ss %xmm0,%xmm6
+    12e5:	f3 0f 11 75 dc       	movss  %xmm6,-0x24(%rbp)
+    c = TWOOVERROOTTHREE*fabs(VBeta);
+    12ea:	f3 0f 10 4d b8       	movss  -0x48(%rbp),%xmm1
+    12ef:	f3 0f 10 05 49 07 00 	movss  0x749(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    12f6:	00 
+    12f7:	0f 54 c1             	andps  %xmm1,%xmm0
+    12fa:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    12fe:	f2 0f 10 0d 52 07 00 	movsd  0x752(%rip),%xmm1        # 1a58 <_IO_stdin_used+0xb8>
+    1305:	00 
+    1306:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    130a:	f2 0f 5a f8          	cvtsd2ss %xmm0,%xmm7
+    130e:	f3 0f 11 7d d8       	movss  %xmm7,-0x28(%rbp)
+
+    //Identify sector and quadrant.
+    if(VBeta >= 0){
+    1313:	f3 0f 10 45 b8       	movss  -0x48(%rbp),%xmm0
+    1318:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    131c:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    131f:	72 62                	jb     1383 <SpaceVectorIMP+0x1c8>
+        if(VAlpha >= 0){
+    1321:	f3 0f 10 45 bc       	movss  -0x44(%rbp),%xmm0
+    1326:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    132a:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    132d:	72 2d                	jb     135c <SpaceVectorIMP+0x1a1>
+            Quadrant = 1;
+    132f:	c7 45 fc 01 00 00 00 	movl   $0x1,-0x4(%rbp)
+            if(b >= 0){
+    1336:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    133b:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    133f:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    1342:	72 0c                	jb     1350 <SpaceVectorIMP+0x195>
+                Sector = 1;
+    1344:	c7 45 f8 01 00 00 00 	movl   $0x1,-0x8(%rbp)
+    134b:	e9 8d 00 00 00       	jmpq   13dd <SpaceVectorIMP+0x222>
+            }else{
+                Sector = 2;
+    1350:	c7 45 f8 02 00 00 00 	movl   $0x2,-0x8(%rbp)
+    1357:	e9 81 00 00 00       	jmpq   13dd <SpaceVectorIMP+0x222>
+            }
+        }else{
+            Quadrant = 2;
+    135c:	c7 45 fc 02 00 00 00 	movl   $0x2,-0x4(%rbp)
+            if(b >= 0){
+    1363:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    1368:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    136c:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    136f:	72 09                	jb     137a <SpaceVectorIMP+0x1bf>
+                Sector = 3;
+    1371:	c7 45 f8 03 00 00 00 	movl   $0x3,-0x8(%rbp)
+    1378:	eb 63                	jmp    13dd <SpaceVectorIMP+0x222>
+            }else{
+                Sector = 2;
+    137a:	c7 45 f8 02 00 00 00 	movl   $0x2,-0x8(%rbp)
+    1381:	eb 5a                	jmp    13dd <SpaceVectorIMP+0x222>
+            }
+        }
+    }else{
+        if(VAlpha >= 0){
+    1383:	f3 0f 10 45 bc       	movss  -0x44(%rbp),%xmm0
+    1388:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    138c:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    138f:	72 27                	jb     13b8 <SpaceVectorIMP+0x1fd>
+            Quadrant = 4;
+    1391:	c7 45 fc 04 00 00 00 	movl   $0x4,-0x4(%rbp)
+            if(b >= 0){
+    1398:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    139d:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    13a1:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    13a4:	72 09                	jb     13af <SpaceVectorIMP+0x1f4>
+                Sector = 6;
+    13a6:	c7 45 f8 06 00 00 00 	movl   $0x6,-0x8(%rbp)
+    13ad:	eb 2e                	jmp    13dd <SpaceVectorIMP+0x222>
+            }else{
+                Sector = 5;
+    13af:	c7 45 f8 05 00 00 00 	movl   $0x5,-0x8(%rbp)
+    13b6:	eb 25                	jmp    13dd <SpaceVectorIMP+0x222>
+            }
+        }else{
+            Quadrant = 3;
+    13b8:	c7 45 fc 03 00 00 00 	movl   $0x3,-0x4(%rbp)
+            if(b >= 0){
+    13bf:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    13c4:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    13c8:	0f 2e c1             	ucomiss %xmm1,%xmm0
+    13cb:	72 09                	jb     13d6 <SpaceVectorIMP+0x21b>
+                Sector = 4;
+    13cd:	c7 45 f8 04 00 00 00 	movl   $0x4,-0x8(%rbp)
+    13d4:	eb 07                	jmp    13dd <SpaceVectorIMP+0x222>
+            }else{
+                Sector = 5;
+    13d6:	c7 45 f8 05 00 00 00 	movl   $0x5,-0x8(%rbp)
+        }
+    }
+
+    //Now, we have a, b, and c along with the sector and quadrant.
+    //With this, we can simply look up the moduli of the vector to the left and the right of the given vector.
+    if(Sector == 1 && Quadrant == 1){
+    13dd:	83 7d f8 01          	cmpl   $0x1,-0x8(%rbp)
+    13e1:	75 1f                	jne    1402 <SpaceVectorIMP+0x247>
+    13e3:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+    13e7:	75 19                	jne    1402 <SpaceVectorIMP+0x247>
+        ur = b;
+    13e9:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    13ee:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = c;
+    13f3:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+    13f8:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    13fd:	e9 43 01 00 00       	jmpq   1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 2 && Quadrant == 1){
+    1402:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+    1406:	75 2a                	jne    1432 <SpaceVectorIMP+0x277>
+    1408:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+    140c:	75 24                	jne    1432 <SpaceVectorIMP+0x277>
+        ur = a;
+    140e:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+    1413:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+    1418:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+    141d:	f3 0f 10 05 3b 06 00 	movss  0x63b(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+    1424:	00 
+    1425:	0f 57 c1             	xorps  %xmm1,%xmm0
+    1428:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    142d:	e9 13 01 00 00       	jmpq   1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 2 && Quadrant == 2){
+    1432:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+    1436:	75 2a                	jne    1462 <SpaceVectorIMP+0x2a7>
+    1438:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+    143c:	75 24                	jne    1462 <SpaceVectorIMP+0x2a7>
+        ur = -b;
+    143e:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+    1443:	f3 0f 10 05 15 06 00 	movss  0x615(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+    144a:	00 
+    144b:	0f 57 c1             	xorps  %xmm1,%xmm0
+    144e:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = a;
+    1453:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+    1458:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    145d:	e9 e3 00 00 00       	jmpq   1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 3 && Quadrant == 2){
+    1462:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+    1466:	75 2a                	jne    1492 <SpaceVectorIMP+0x2d7>
+    1468:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+    146c:	75 24                	jne    1492 <SpaceVectorIMP+0x2d7>
+        ur = c;
+    146e:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+    1473:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+    1478:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+    147d:	f3 0f 10 05 db 05 00 	movss  0x5db(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+    1484:	00 
+    1485:	0f 57 c1             	xorps  %xmm1,%xmm0
+    1488:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    148d:	e9 b3 00 00 00       	jmpq   1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 4 && Quadrant == 3){
+    1492:	83 7d f8 04          	cmpl   $0x4,-0x8(%rbp)
+    1496:	75 1f                	jne    14b7 <SpaceVectorIMP+0x2fc>
+    1498:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp)
+    149c:	75 19                	jne    14b7 <SpaceVectorIMP+0x2fc>
+        ur = b;
+    149e:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    14a3:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = c;
+    14a8:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+    14ad:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    14b2:	e9 8e 00 00 00       	jmpq   1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 5 && Quadrant == 3){
+    14b7:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+    14bb:	75 27                	jne    14e4 <SpaceVectorIMP+0x329>
+    14bd:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp)
+    14c1:	75 21                	jne    14e4 <SpaceVectorIMP+0x329>
+        ur = a;
+    14c3:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+    14c8:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = -b;
+    14cd:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+    14d2:	f3 0f 10 05 86 05 00 	movss  0x586(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+    14d9:	00 
+    14da:	0f 57 c1             	xorps  %xmm1,%xmm0
+    14dd:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    14e2:	eb 61                	jmp    1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 5 && Quadrant == 4){
+    14e4:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+    14e8:	75 27                	jne    1511 <SpaceVectorIMP+0x356>
+    14ea:	83 7d fc 04          	cmpl   $0x4,-0x4(%rbp)
+    14ee:	75 21                	jne    1511 <SpaceVectorIMP+0x356>
+        ur = -b;
+    14f0:	f3 0f 10 4d dc       	movss  -0x24(%rbp),%xmm1
+    14f5:	f3 0f 10 05 63 05 00 	movss  0x563(%rip),%xmm0        # 1a60 <_IO_stdin_used+0xc0>
+    14fc:	00 
+    14fd:	0f 57 c1             	xorps  %xmm1,%xmm0
+    1500:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = a;
+    1505:	f3 0f 10 45 e0       	movss  -0x20(%rbp),%xmm0
+    150a:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    150f:	eb 34                	jmp    1545 <SpaceVectorIMP+0x38a>
+    }else if(Sector == 6 && Quadrant == 4){
+    1511:	83 7d f8 06          	cmpl   $0x6,-0x8(%rbp)
+    1515:	75 1c                	jne    1533 <SpaceVectorIMP+0x378>
+    1517:	83 7d fc 04          	cmpl   $0x4,-0x4(%rbp)
+    151b:	75 16                	jne    1533 <SpaceVectorIMP+0x378>
+        ur = c;
+    151d:	f3 0f 10 45 d8       	movss  -0x28(%rbp),%xmm0
+    1522:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = b;
+    1527:	f3 0f 10 45 dc       	movss  -0x24(%rbp),%xmm0
+    152c:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    1531:	eb 12                	jmp    1545 <SpaceVectorIMP+0x38a>
+    }else{
+        ur = 0;
+    1533:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1537:	f3 0f 11 45 f4       	movss  %xmm0,-0xc(%rbp)
+        ul = 0;
+    153c:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1540:	f3 0f 11 45 f0       	movss  %xmm0,-0x10(%rbp)
+    }
+
+    //Now we have ur and ul and can easily get the switching times for r and l
+    Tr = PulsePeriod*fabs(ur)/umax;
+    1545:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    154a:	f3 0f 10 55 f4       	movss  -0xc(%rbp),%xmm2
+    154f:	f3 0f 10 05 e9 04 00 	movss  0x4e9(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    1556:	00 
+    1557:	0f 54 c2             	andps  %xmm2,%xmm0
+    155a:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    155e:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1562:	f3 0f 5a 4d d4       	cvtss2sd -0x2c(%rbp),%xmm1
+    1567:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    156b:	f2 0f 5a d8          	cvtsd2ss %xmm0,%xmm3
+    156f:	f3 0f 11 5d d0       	movss  %xmm3,-0x30(%rbp)
+    Tl = PulsePeriod*fabs(ul)/umax;
+    1574:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1579:	f3 0f 10 55 f0       	movss  -0x10(%rbp),%xmm2
+    157e:	f3 0f 10 05 ba 04 00 	movss  0x4ba(%rip),%xmm0        # 1a40 <_IO_stdin_used+0xa0>
+    1585:	00 
+    1586:	0f 54 c2             	andps  %xmm2,%xmm0
+    1589:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    158d:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1591:	f3 0f 5a 4d d4       	cvtss2sd -0x2c(%rbp),%xmm1
+    1596:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    159a:	f2 0f 5a e0          	cvtsd2ss %xmm0,%xmm4
+    159e:	f3 0f 11 65 cc       	movss  %xmm4,-0x34(%rbp)
+    T0 = (PulsePeriod - Tr - Tl)/2.;
+    15a3:	f3 0f 10 45 b0       	movss  -0x50(%rbp),%xmm0
+    15a8:	f3 0f 5c 45 d0       	subss  -0x30(%rbp),%xmm0
+    15ad:	f3 0f 5c 45 cc       	subss  -0x34(%rbp),%xmm0
+    15b2:	f3 0f 10 0d b6 04 00 	movss  0x4b6(%rip),%xmm1        # 1a70 <_IO_stdin_used+0xd0>
+    15b9:	00 
+    15ba:	f3 0f 5e c1          	divss  %xmm1,%xmm0
+    15be:	f3 0f 11 45 c8       	movss  %xmm0,-0x38(%rbp)
+    T7 = T0;
+    15c3:	f3 0f 10 45 c8       	movss  -0x38(%rbp),%xmm0
+    15c8:	f3 0f 11 45 c4       	movss  %xmm0,-0x3c(%rbp)
+
+    //Now we have the switching times for all 4 states used in one cycle. We also have the Sector, so we know which vectors ur and ul are.
+    //I am assuming phase correct PWM. When the PWM counter is less than the setpoint, the pair controlled by that PWM is connected to ground. When the counter is greater than the setpoint, the pair is connected to the DC Link Voltage.
+    //So, say we are looking at u. if the counter is 100 and the setpoint is 200, u is connected to ground. if the counter is 300, u is connected to high DC voltage. 
+    //Phase correct means the counter counts up from 0 to the max pwm value, then back down to zero.
+    if(Sector == 1){
+    15cd:	83 7d f8 01          	cmpl   $0x1,-0x8(%rbp)
+    15d1:	75 7c                	jne    164f <SpaceVectorIMP+0x494>
+        uSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    15d3:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    15d7:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    15dc:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    15e1:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    15e6:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    15ea:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        vSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+    15ed:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    15f1:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    15f6:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    15fb:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+    1600:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    1604:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1608:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    160d:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1611:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1615:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        wSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    1618:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    161c:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1621:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    1626:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    162b:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    162f:	f2 0f 10 15 41 04 00 	movsd  0x441(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    1636:	00 
+    1637:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    163b:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    163f:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1643:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1647:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+    164a:	e9 9c 02 00 00       	jmpq   18eb <SpaceVectorIMP+0x730>
+    }else if(Sector == 2){
+    164f:	83 7d f8 02          	cmpl   $0x2,-0x8(%rbp)
+    1653:	75 7c                	jne    16d1 <SpaceVectorIMP+0x516>
+        vSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    1655:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1659:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    165e:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    1663:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    1668:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    166c:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        uSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+    166f:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1673:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1678:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    167d:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+    1682:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    1686:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    168a:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    168f:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1693:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1697:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        wSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    169a:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    169e:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    16a3:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    16a8:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    16ad:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    16b1:	f2 0f 10 15 bf 03 00 	movsd  0x3bf(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    16b8:	00 
+    16b9:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    16bd:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    16c1:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    16c5:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    16c9:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+    16cc:	e9 1a 02 00 00       	jmpq   18eb <SpaceVectorIMP+0x730>
+    }else if(Sector == 3){
+    16d1:	83 7d f8 03          	cmpl   $0x3,-0x8(%rbp)
+    16d5:	75 7c                	jne    1753 <SpaceVectorIMP+0x598>
+        vSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    16d7:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    16db:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    16e0:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    16e5:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    16ea:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    16ee:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        wSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+    16f1:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    16f5:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    16fa:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    16ff:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+    1704:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    1708:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    170c:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1711:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1715:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    1719:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        uSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    171c:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1720:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1725:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    172a:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    172f:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    1733:	f2 0f 10 15 3d 03 00 	movsd  0x33d(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    173a:	00 
+    173b:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    173f:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    1743:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1747:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    174b:	89 45 ec             	mov    %eax,-0x14(%rbp)
+    174e:	e9 98 01 00 00       	jmpq   18eb <SpaceVectorIMP+0x730>
+    }else if(Sector == 4){
+    1753:	83 7d f8 04          	cmpl   $0x4,-0x8(%rbp)
+    1757:	75 7c                	jne    17d5 <SpaceVectorIMP+0x61a>
+        wSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    1759:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    175d:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    1762:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    1767:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    176c:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    1770:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        vSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+    1773:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1777:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    177c:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    1781:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+    1786:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    178a:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    178e:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1793:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1797:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    179b:	89 45 e8             	mov    %eax,-0x18(%rbp)
+        uSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    179e:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    17a2:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    17a7:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    17ac:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    17b1:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    17b5:	f2 0f 10 15 bb 02 00 	movsd  0x2bb(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    17bc:	00 
+    17bd:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    17c1:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    17c5:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    17c9:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    17cd:	89 45 ec             	mov    %eax,-0x14(%rbp)
+    17d0:	e9 16 01 00 00       	jmpq   18eb <SpaceVectorIMP+0x730>
+    }else if(Sector == 5){
+    17d5:	83 7d f8 05          	cmpl   $0x5,-0x8(%rbp)
+    17d9:	75 7c                	jne    1857 <SpaceVectorIMP+0x69c>
+        wSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    17db:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    17df:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    17e4:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    17e9:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    17ee:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    17f2:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        uSetpoint = (PWMMaxValue)*(T0 + 1.*Tr)/PulsePeriod;
+    17f5:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    17f9:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    17fe:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    1803:	f3 0f 5a 45 d0       	cvtss2sd -0x30(%rbp),%xmm0
+    1808:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    180c:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1810:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1815:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    1819:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    181d:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        vSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    1820:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    1824:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1829:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    182e:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    1833:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    1837:	f2 0f 10 15 39 02 00 	movsd  0x239(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    183e:	00 
+    183f:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    1843:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    1847:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    184b:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    184f:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    1852:	e9 94 00 00 00       	jmpq   18eb <SpaceVectorIMP+0x730>
+    }else if(Sector == 6){
+    1857:	83 7d f8 06          	cmpl   $0x6,-0x8(%rbp)
+    185b:	75 79                	jne    18d6 <SpaceVectorIMP+0x71b>
+        uSetpoint = (PWMMaxValue)*T0/PulsePeriod;
+    185d:	66 0f ef c0          	pxor   %xmm0,%xmm0
+    1861:	f3 0f 2a 45 ac       	cvtsi2ssl -0x54(%rbp),%xmm0
+    1866:	f3 0f 59 45 c8       	mulss  -0x38(%rbp),%xmm0
+    186b:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    1870:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+    1874:	89 45 ec             	mov    %eax,-0x14(%rbp)
+        wSetpoint = (PWMMaxValue)*(T0 + 1.*Tl)/PulsePeriod;
+    1877:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    187b:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    1880:	f3 0f 5a 55 c8       	cvtss2sd -0x38(%rbp),%xmm2
+    1885:	f3 0f 5a 45 cc       	cvtss2sd -0x34(%rbp),%xmm0
+    188a:	f2 0f 58 c2          	addsd  %xmm2,%xmm0
+    188e:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    1892:	f3 0f 5a 4d b0       	cvtss2sd -0x50(%rbp),%xmm1
+    1897:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    189b:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    189f:	89 45 e4             	mov    %eax,-0x1c(%rbp)
+        vSetpoint = (PWMMaxValue)*(1. - T7/PulsePeriod);
+    18a2:	66 0f ef c9          	pxor   %xmm1,%xmm1
+    18a6:	f2 0f 2a 4d ac       	cvtsi2sdl -0x54(%rbp),%xmm1
+    18ab:	f3 0f 10 45 c4       	movss  -0x3c(%rbp),%xmm0
+    18b0:	f3 0f 5e 45 b0       	divss  -0x50(%rbp),%xmm0
+    18b5:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+    18b9:	f2 0f 10 15 b7 01 00 	movsd  0x1b7(%rip),%xmm2        # 1a78 <_IO_stdin_used+0xd8>
+    18c0:	00 
+    18c1:	f2 0f 5c d0          	subsd  %xmm0,%xmm2
+    18c5:	66 0f 28 c2          	movapd %xmm2,%xmm0
+    18c9:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    18cd:	f2 0f 2c c0          	cvttsd2si %xmm0,%eax
+    18d1:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    18d4:	eb 15                	jmp    18eb <SpaceVectorIMP+0x730>
+    }else{
+        uSetpoint = 0;
+    18d6:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+        vSetpoint = 0;
+    18dd:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+        wSetpoint = 0;
+    18e4:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%rbp)
+    }
+
+    //So, we have the u, v, and w setpoints for phase correct PWM. Put them into the return array so they can be accessed once this function ends.
+    PWMReturnValues[0] = uSetpoint;
+    18eb:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    18ef:	8b 55 ec             	mov    -0x14(%rbp),%edx
+    18f2:	89 10                	mov    %edx,(%rax)
+    PWMReturnValues[1] = vSetpoint;
+    18f4:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    18f8:	48 8d 50 04          	lea    0x4(%rax),%rdx
+    18fc:	8b 45 e8             	mov    -0x18(%rbp),%eax
+    18ff:	89 02                	mov    %eax,(%rdx)
+    PWMReturnValues[2] = wSetpoint;
+    1901:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    1905:	48 8d 50 08          	lea    0x8(%rax),%rdx
+    1909:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+    190c:	89 02                	mov    %eax,(%rdx)
+
+}
+    190e:	90                   	nop
+    190f:	5d                   	pop    %rbp
+    1910:	c3                   	retq   
+    1911:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+    1918:	00 00 00 
+    191b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000001920 <__libc_csu_init>:
+    1920:	41 57                	push   %r15
+    1922:	41 56                	push   %r14
+    1924:	41 89 ff             	mov    %edi,%r15d
+    1927:	41 55                	push   %r13
+    1929:	41 54                	push   %r12
+    192b:	4c 8d 25 96 04 20 00 	lea    0x200496(%rip),%r12        # 201dc8 <__frame_dummy_init_array_entry>
+    1932:	55                   	push   %rbp
+    1933:	48 8d 2d 96 04 20 00 	lea    0x200496(%rip),%rbp        # 201dd0 <__init_array_end>
+    193a:	53                   	push   %rbx
+    193b:	49 89 f6             	mov    %rsi,%r14
+    193e:	49 89 d5             	mov    %rdx,%r13
+    1941:	4c 29 e5             	sub    %r12,%rbp
+    1944:	48 83 ec 08          	sub    $0x8,%rsp
+    1948:	48 c1 fd 03          	sar    $0x3,%rbp
+    194c:	e8 e7 ec ff ff       	callq  638 <_init>
+    1951:	48 85 ed             	test   %rbp,%rbp
+    1954:	74 20                	je     1976 <__libc_csu_init+0x56>
+    1956:	31 db                	xor    %ebx,%ebx
+    1958:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    195f:	00 
+    1960:	4c 89 ea             	mov    %r13,%rdx
+    1963:	4c 89 f6             	mov    %r14,%rsi
+    1966:	44 89 ff             	mov    %r15d,%edi
+    1969:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+    196d:	48 83 c3 01          	add    $0x1,%rbx
+    1971:	48 39 dd             	cmp    %rbx,%rbp
+    1974:	75 ea                	jne    1960 <__libc_csu_init+0x40>
+    1976:	48 83 c4 08          	add    $0x8,%rsp
+    197a:	5b                   	pop    %rbx
+    197b:	5d                   	pop    %rbp
+    197c:	41 5c                	pop    %r12
+    197e:	41 5d                	pop    %r13
+    1980:	41 5e                	pop    %r14
+    1982:	41 5f                	pop    %r15
+    1984:	c3                   	retq   
+    1985:	90                   	nop
+    1986:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+    198d:	00 00 00 
+
+0000000000001990 <__libc_csu_fini>:
+    1990:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+0000000000001994 <_fini>:
+    1994:	48 83 ec 08          	sub    $0x8,%rsp
+    1998:	48 83 c4 08          	add    $0x8,%rsp
+    199c:	c3                   	retq   
