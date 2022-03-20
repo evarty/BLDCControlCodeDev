@@ -3,40 +3,66 @@
 #include <stdlib.h>
 
 
-void MatrixMultiply(float A[][4], float B[][4], int ADimRow, int ADimCol, int BDimRow, int BDimCol, float Result[][4]);
-void MatrixAddition(float A[][4], float B[][4], int ADimRow, int ADimCol, float Result[][4]);
-void MatrixSubtraction(float A[][4], float B[][4], int ADimRow, int ADimCol, float Result[][4]);
-void MultiplyMatrixByConstant(float A[][4], float C, int ADimRow, int ADimCol, float Result[][4]);
+//These all take larger matrices than needed
+//Because C needs to know array size at compile-time, they take 10x10 matrices
+//The actual operations don't do that, they use defined matrix dimensions
+//But the memory footprint is higher than it needs to be for smaller matrices
+//Must define matrices as 10x10. Just fill the remaining with zeros.
+void MatrixMultiply(float A[][10], float B[][10], int ADimRow, int ADimCol, int BDimRow, int BDimCol, float Result[][10]);
+void MatrixAddition(float A[][10], float B[][10], int ADimRow, int ADimCol, float Result[][10]);
+void MatrixSubtraction(float A[][10], float B[][10], int ADimRow, int ADimCol, float Result[][10]);
+void MultiplyMatrixByConstant(float A[][10], float C, int ADimRow, int ADimCol, float Result[][10]);
 
 int main(void){
 
 
-    FILE *Output;
-    Output = fopen("./Output.txt","w");
-    //fprintf(Output, "Valpha, VBeta, USetpoint, VSetpoint, WSetpoint\n");
-    fprintf(Output, "Theta, USetpoint, VSetpoint, WSetpoint\n");
+    //FILE *Output;
+    //Output = fopen("./Output.txt","w");
+    //fprintf(Output, "Theta, USetpoint, VSetpoint, WSetpoint\n");
 
-    float A[4][4] = {
-        {1,0,0,0},
-        {0,1,0,0},
-        {0,0,1,0},
-        {0,0,0,1}
+    int DimACol = 4;
+    int DimARow = 4;
+    float A[10][10] = {
+        {1,8,3,0,0,0,0,0,0,0},
+        {0,1,0,0,0,0,0,0,0,0},
+        {0,2,1,0,0,0,0,0,0,0},
+        {0,0,6,1,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},              
+        {0,0,0,0,0,0,0,0,0,0},               
+        {0,0,0,0,0,0,0,0,0,0},              
+        {0,0,0,0,0,0,0,0,0,0},               
+        {0,0,0,0,0,0,0,0,0,0}               
     };
-    float B[4][4] = {
-        {2,5,7,2},
-        {7,9,3,4},
-        {5,8,2,5},
-        {8,4,9,3}
+    int DimBCol = 4;
+    int DimBRow = 4;
+    float B[10][10] = {
+        {2,5,7,2,0,0,0,0,0,0},
+        {7,9,3,4,0,0,0,0,0,0},
+        {5,8,2,5,0,0,0,0,0,0},
+        {8,4,9,3,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},              
+        {0,0,0,0,0,0,0,0,0,0}
     };
     float C = 5;
-    float Result[4][4] = {
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0}
+    float Result[10][10] = {
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0,0,0}
     };
 
-    MultiplyMatrixByConstant(A, C, 4, 4, Result);
+    MatrixSubtraction(A, B, DimARow, DimACol, Result);
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             printf("%lf ", Result[i][j]);
@@ -52,7 +78,7 @@ int main(void){
 
 //Multiplies matrices together
 //This assumes that proper sized matrices are passed to it. Checks must be done outside the function.
-void MatrixMultiply(float A[][4], float B[][4], int ADimRow, int ADimCol, int BDimRow, int BDimCol, float Result[][4]){
+void MatrixMultiply(float A[][10], float B[][10], int ADimRow, int ADimCol, int BDimRow, int BDimCol, float Result[][10]){
 
     for(int i = 0; i < ADimRow; i++){
         for(int j = 0; j < BDimCol; j++){
@@ -66,7 +92,7 @@ void MatrixMultiply(float A[][4], float B[][4], int ADimRow, int ADimCol, int BD
     }
 }
 
-void MatrixAddition(float A[][4], float B[][4], int ADimRow, int ADimCol, float Result[][4]){
+void MatrixAddition(float A[][10], float B[][10], int ADimRow, int ADimCol, float Result[][10]){
 
     for(int i = 0; i < ADimRow; i++){
         for(int j = 0; j < ADimCol; j++){
@@ -75,7 +101,7 @@ void MatrixAddition(float A[][4], float B[][4], int ADimRow, int ADimCol, float 
     }
 }
 
-void MatrixSubtraction(float A[][4], float B[][4], int ADimRow, int ADimCol, float Result[][4]){
+void MatrixSubtraction(float A[][10], float B[][10], int ADimRow, int ADimCol, float Result[][10]){
 
     for(int i = 0; i < ADimRow; i++){
         for(int j = 0; j < ADimCol; j++){
@@ -84,7 +110,7 @@ void MatrixSubtraction(float A[][4], float B[][4], int ADimRow, int ADimCol, flo
     }
 }
 
-void MultiplyMatrixByConstant(float A[][4], float C, int ADimRow, int ADimCol, float Result[][4]){
+void MultiplyMatrixByConstant(float A[][10], float C, int ADimRow, int ADimCol, float Result[][10]){
 
     for(int i = 0; i < ADimRow; i++){
         for(int j = 0; j < ADimCol; j++){
