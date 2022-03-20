@@ -30,7 +30,7 @@ int main(void){
     int OutputMax = 4800;
 
     //Array to be passed to and from the PI controller
-    //[0] is the output. [1] is the integral value
+    //[0] is the output. [1] is the integral term, with constant already in it
     int PIControllerArray[2] = {0,0};
     
     
@@ -73,27 +73,31 @@ void PIControllerComputeIrregularSampleInterval(int Error, float Kp, float Ki, i
 //the prior output doesn't actually do anything.
 //also clamps to output to be in [-OuputMax, OutputMAx]
 //Assumes that it will be called at a regular interval, such as by timer interrupt
+//PIArray[0] is the output.
+//PIArray [1] is the running Integral output term
 void PIControllerComputeRegularSampleInterval(int Error, float Kp, float Ki, int PIArray[], int OutputMax){
 
-    int hold = 0;
+    //Compute the Integral Term.
+    //First add in the new integral term contirubtion from current error
+    //and current Ki value
+    PIArray[1] += Ki*Error;
 
-    PIArray[1] += Error;
+    //Prevent windup
     //This bit keeps the I term from growing without bound
-    //Prevents windup
-    int IntegralOutputTerm = Ki*PIArray[1];
-    if(IntegralOutputTerm > OutputMax)
-        IntegralOutputTerm = OutputMax;
-    else if(IntegralOutputTerm < -OutputMax)
-        IntegralOutputTerm = -Outputmax;
+    //int IntegralOutputTerm = Ki*PIArray[1];
+    if(PIArray[1]/*IntegralOutputTerm*/ > OutputMax)
+        PIArray[1]/*IntegralOutputTerm*/ = OutputMax;
+    else if(PIArray[1]/*IntegralOutputTerm*/ < -OutputMax)
+        PIArray[1]/*IntegralOutputTerm*/ = -Outputmax;
 
-    hold = Kp*Error + IntegralOutputTerm;
+    PIArray[0] = Kp*Error + PIArray[1]/*IntegralOutputTerm*/;
     
     //Prevents the output from going outside the given range. 
-    if(hold > OutputMax)
+    if(PIArray[0] > OutputMax)
         PIArray[0] = OutputMax;
-    else if(hold < -OutputMax)
+    else if(PIArray[0] < -OutputMax)
         PIArray[0] = -OutputMax;
     else
-        PIArray[0] = hold;
+        PIArray[0] = PIArray[0];
 
 }
